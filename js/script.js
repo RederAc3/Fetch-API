@@ -12,23 +12,23 @@ function getQuote() {
 
 function createTweet(input) {
     var data = input[0];
-
     var dataElement = document.createElement('div');
     dataElement.innerHTML =data.content;
     var quoteText = dataElement.innerHTML.trim();
     var quoteAuthor = data.title;
+    // console.log("tablica data:  "  + quoteText);
 
     if (!quoteAuthor.length) {
         quoteAuthor = "Unknow author";
     }
 
     var tweetText = "Quote of the day - " + quoteText + " Author: " + quoteAuthor;
-
+console.log("sdsdsd::  " + tweetText);
     if (tweetText.length > 140) {
         getQuote();
     } else {
         var tweet = tweetLink + encodeURIComponent(tweetText);
-        document.querySelector('.quote').innerText = quoteText;
+        document.querySelector('.quote').innerHTML = quoteText;
         document.querySelector('.author').innerText = "Author: " + quoteAuthor;
         document.querySelector('.tweet').setAttribute('href', tweet);
     }
